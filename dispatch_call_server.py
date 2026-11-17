@@ -10,7 +10,7 @@ from livekit import api
 
 load_dotenv(".env.local")
 
-logger = logging.getLogger("dispatch-call")
+logger = logging.getLogger("dispatch-call-server")
 
 AGENT_NAME = "outbound-agent"
 CALLEE_IDENTITY = "callee"

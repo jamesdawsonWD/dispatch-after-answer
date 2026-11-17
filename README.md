@@ -6,7 +6,7 @@ The usual outbound pattern dispatches the agent first and has it dial. If the ag
 
 This repo flips the order:
 
-1. `dispatch_call.py` creates a fresh room and dials the number with `CreateSIPParticipant` and `wait_until_answered=True`. The call returns once the callee answers, or raises `SipCallError` if they don't.
+1. `dispatch_call_server.py` creates a fresh room and dials the number with `CreateSIPParticipant` and `wait_until_answered=True`. The call returns once the callee answers, or raises `SipCallError` if they don't.
 2. Only then does it call `CreateAgentDispatch` for that room ([dispatch via API](https://docs.livekit.io/agents/server/agent-dispatch/#via-api)), passing the callee's identity as job metadata.
 3. `agent.py` connects first thing in its entrypoint, finds the callee, starts the session and speaks a short opening line.
 
@@ -32,7 +32,7 @@ uv run agent.py dev
 In another terminal, place a call:
 
 ```bash
-uv run dispatch_call.py +15105550100
+uv run dispatch_call_server.py +15105550100
 ```
 
 ## Notes
